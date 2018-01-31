@@ -3,12 +3,12 @@ pipeline {
    stages {
       stage('yarn') {
          steps {
-            sh 'yarn install'
+            sh 'npm install'
          }
       }
       stage('gulp') {
          steps {
-            sh 'yarn gulp build'
+            sh 'npx gulp build'
          }
       }
    }
