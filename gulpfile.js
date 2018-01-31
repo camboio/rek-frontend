@@ -25,7 +25,7 @@ gulp.task('buildlib', function(){
    gulp.src('./lib/**/*.*')
    .pipe(gulp.dest('./build/lib/'))
 });
-gulp.task('build', ['html', 'css', 'sass', 'buildlib'], function(){
+gulp.task('build', ['lib', 'html', 'css', 'sass', 'buildlib'], function(){
    return gulp.src('./src/index.js')
    .pipe(webpack(require('./webpack.config.js')))
    .pipe(gulp.dest('./build/'))
