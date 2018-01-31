@@ -16,15 +16,21 @@ gulp.task('html', function(){
    .pipe(gulp.dest('./build/'))
 });
 gulp.task('lib', function(){
+   gulp.src('./node_modules/bootstrap/**/*.*')
+   .pipe(gulp.dest('./lib/bootstrap/'));
+   gulp.src('./node_modules/font-awesome/**/*.*')
+   .pipe(gulp.dest('./lib/font-awesome/'));
+})
+gulp.task('buildlib', function(){
    gulp.src('./lib/**/*.*')
    .pipe(gulp.dest('./build/lib/'))
 });
-gulp.task('build', ['html', 'css', 'sass', 'lib'], function(){
+gulp.task('build', ['html', 'css', 'sass', 'buildlib'], function(){
    return gulp.src('./src/index.js')
    .pipe(webpack(require('./webpack.config.js')))
    .pipe(gulp.dest('./build/'))
 });
-gulp.task('default', ['sass'], function() {
+gulp.task('default', ['lib', 'sass'], function() {
     gulp.watch([
         'scss/*.scss'
     ], ['sass'])
