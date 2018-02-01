@@ -22,7 +22,7 @@ export default class App extends React.Component {
          }
 
          data.append('image', image, image.name);
-         axios.post('http://node.cambo.io:3000/upload', data, config)
+         axios.post('http://node.cambo.io:3000/compare', data, config)
          .then(response => {
             console.log('things went well!', response);
             this.setState({ results: response.data, error: null });
